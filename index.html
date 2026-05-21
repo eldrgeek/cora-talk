@@ -19,7 +19,6 @@
       padding: 2rem 1rem;
     }
 
-    /* ── Shared header ─────────────────────────────────── */
     .page-header {
       text-align: center;
       margin-bottom: 2rem;
@@ -37,116 +36,14 @@
       letter-spacing: 0.02em;
     }
 
-    /* ── Screen management ─────────────────────────────── */
-    .screen { width: 100%; max-width: 680px; display: flex; flex-direction: column; align-items: center; }
-    .screen[hidden] { display: none; }
-
-    /* ── Picker screen ─────────────────────────────────── */
-    .picker-intro {
-      font-size: 0.9rem;
-      color: #8a7f6e;
-      text-align: center;
-      max-width: 440px;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-
-    .voice-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
-      width: 100%;
-    }
-    @media (max-width: 480px) {
-      .voice-grid { grid-template-columns: 1fr; }
-    }
-
-    .voice-card {
-      background: #1a1612;
-      border: 1.5px solid #2d2720;
-      border-radius: 10px;
-      padding: 1rem 1rem 0.85rem;
-      cursor: pointer;
-      transition: border-color 0.15s, background 0.15s;
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-      position: relative;
-    }
-    .voice-card:hover {
-      border-color: #5a4e3a;
-      background: #1e1a15;
-    }
-    .voice-card.selected {
-      border-color: #c4a35a;
-      background: #1e1a13;
-    }
-    .voice-card.selected::after {
-      content: '✓';
-      position: absolute;
-      top: 0.65rem;
-      right: 0.75rem;
-      font-size: 0.8rem;
-      color: #c4a35a;
-      font-weight: 700;
-    }
-
-    .voice-name {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #f0ebe2;
-      letter-spacing: 0.02em;
-    }
-    .voice-tag {
-      display: inline-block;
-      font-size: 0.68rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #7a6e5a;
-      background: #252018;
-      border-radius: 4px;
-      padding: 0.15em 0.45em;
-      margin-bottom: 0.15rem;
-    }
-    .voice-desc {
-      font-size: 0.82rem;
-      color: #8a7f6e;
-      line-height: 1.5;
-    }
-
-    .voice-preview-btn {
-      margin-top: 0.5rem;
-      align-self: flex-start;
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-      background: none;
-      border: 1px solid #3a3228;
-      border-radius: 5px;
-      color: #8a7f6e;
-      font-size: 0.75rem;
-      padding: 0.3em 0.65em;
-      cursor: pointer;
-      transition: border-color 0.15s, color 0.15s;
-    }
-    .voice-preview-btn:hover:not(:disabled) {
-      border-color: #c4a35a;
-      color: #c4a35a;
-    }
-    .voice-preview-btn:disabled {
-      opacity: 0.35;
-      cursor: default;
-    }
-    .voice-preview-btn .play-icon { font-size: 0.7rem; }
-
-    /* ── CTA row ───────────────────────────────────────── */
-    .cta-row {
-      margin-top: 1.5rem;
+    /* ── Start screen ──────────────────────────────────── */
+    #start-screen {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.7rem;
+      gap: 1.5rem;
       width: 100%;
+      max-width: 400px;
     }
 
     .btn-start {
@@ -154,45 +51,32 @@
       color: #0f0d0b;
       border: none;
       border-radius: 8px;
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 600;
       letter-spacing: 0.03em;
-      padding: 0.75em 2.5em;
+      padding: 0.85em 3em;
       cursor: pointer;
-      transition: background 0.15s, opacity 0.15s;
-      min-width: 220px;
+      transition: background 0.15s;
     }
-    .btn-start:hover:not(:disabled) { background: #d4b36a; }
-    .btn-start:disabled { opacity: 0.45; cursor: default; }
+    .btn-start:hover { background: #d4b36a; }
 
-    .btn-skip {
-      background: none;
-      border: none;
-      color: #4a4035;
+    .hint {
       font-size: 0.8rem;
-      cursor: pointer;
-      text-decoration: underline;
-      text-decoration-color: #3a3228;
+      color: #4a4035;
+      text-align: center;
     }
-    .btn-skip:hover { color: #7a6e5a; }
 
     /* ── Conversation screen ───────────────────────────── */
     #conv-screen {
+      display: none;
+      flex-direction: column;
+      align-items: center;
       gap: 1rem;
-    }
-
-    .voice-badge {
-      font-size: 0.78rem;
-      color: #7a6e5a;
-      letter-spacing: 0.04em;
-    }
-    .voice-badge span {
-      color: #c4a35a;
-      font-weight: 600;
+      width: 100%;
+      max-width: 400px;
     }
 
     .widget-wrap {
-      position: relative;
       width: 340px;
       height: 340px;
     }
@@ -201,247 +85,44 @@
       width: 100%;
       height: 100%;
     }
-
-    .btn-change-voice {
-      background: none;
-      border: 1px solid #2d2720;
-      border-radius: 6px;
-      color: #4a4035;
-      font-size: 0.75rem;
-      padding: 0.35em 0.9em;
-      cursor: pointer;
-      transition: border-color 0.15s, color 0.15s;
-      letter-spacing: 0.03em;
-    }
-    .btn-change-voice:hover {
-      border-color: #5a4e3a;
-      color: #8a7f6e;
-    }
-
-    .hint {
-      font-size: 0.8rem;
-      color: #4a4035;
-      text-align: center;
-      max-width: 320px;
-    }
   </style>
 </head>
 <body>
 
-  <!-- ── Voice Picker Screen ──────────────────────────── -->
-  <div id="picker-screen" class="screen">
+  <!-- ── Start Screen ─────────────────────────────────── -->
+  <div id="start-screen">
     <div class="page-header">
       <h1>Cora</h1>
       <p class="subtitle">NBRPA Member Services — Committee Thinking Partner</p>
     </div>
 
-    <p class="picker-intro">
-      Before we start, pick the voice you'd like Cora to use.
-      Sample a few and choose the one that works for you.
-    </p>
-
-    <div class="voice-grid" id="voice-grid">
-      <!-- Cards injected by JS -->
-    </div>
-
-    <div class="cta-row">
-      <button class="btn-start" id="btn-start" disabled>Choose a voice to begin</button>
-      <button class="btn-skip" id="btn-skip">Skip — use default</button>
-    </div>
+    <button class="btn-start" id="btn-start">Talk to Cora</button>
+    <p class="hint">Allow microphone access when prompted.</p>
   </div>
 
   <!-- ── Conversation Screen ──────────────────────────── -->
-  <div id="conv-screen" class="screen" hidden>
+  <div id="conv-screen">
     <div class="page-header">
       <h1>Cora</h1>
       <p class="subtitle">NBRPA Member Services — Committee Thinking Partner</p>
     </div>
 
-    <p class="voice-badge" id="voice-badge"></p>
-
-    <div class="widget-wrap" id="widget-container">
-      <!-- Widget injected after voice selection -->
-    </div>
-
-    <p class="hint">Click the orb to start — allow mic access when prompted.</p>
-
-    <button class="btn-change-voice" id="btn-change-voice">Change voice</button>
+    <div class="widget-wrap" id="widget-container"></div>
   </div>
 
   <script>
     const AGENT_ID = 'agent_2401ks53q6t8e2drt1h7va3f2c52';
 
-    const VOICES = [
-      {
-        id: 'JBFqnCBsd6RMkjVDRZzb',
-        name: 'George',
-        tag: 'British · Male',
-        desc: 'Deep baritone, steady and assured. Natural authority without effort.',
-        isDefault: true,
-      },
-      {
-        id: 'nPczCjzI2devNBz1zQrb',
-        name: 'Brian',
-        tag: 'American · Male',
-        desc: 'Warm and conversational. Grounded — like a trusted colleague.',
-      },
-      {
-        id: 'pqHfZKP75CvOlQylNhV4',
-        name: 'Bill',
-        tag: 'American · Male',
-        desc: 'Rich, deep baritone. Trustworthy, settled — elder-statesman quality.',
-      },
-      {
-        id: 'N2lVS1w4EtoT3dr4eOWO',
-        name: 'Callum',
-        tag: 'American · Male',
-        desc: 'Direct and focused. Grounded intensity — every word counts.',
-      },
-      {
-        id: 'ThT5KcBeYPX3keUQqHPh',
-        name: 'Dorothy',
-        tag: 'British · Female',
-        desc: 'Measured and confident. Precise, unhurried — professional and warm.',
-      },
-      {
-        id: 'XB0fDUnXU5powFXDhCwa',
-        name: 'Charlotte',
-        tag: 'British · Female',
-        desc: 'Thoughtful and warm. Naturally collaborative — draws thinking out.',
-      },
-    ];
-
-    // Map voiceId → preview URL (populated by API fetch)
-    const previewUrls = {};
-    let selectedVoiceId = null;
-    let activeAudio = null;
-
-    // Fetch public voice previews (no auth required for premade voices)
-    fetch('https://api.elevenlabs.io/v1/voices')
-      .then(r => r.json())
-      .then(data => {
-        (data.voices || []).forEach(v => {
-          if (v.preview_url) previewUrls[v.voice_id] = v.preview_url;
-        });
-        updatePreviewButtons();
-      })
-      .catch(() => {}); // preview buttons stay disabled if fetch fails
-
-    function buildGrid() {
-      const grid = document.getElementById('voice-grid');
-      VOICES.forEach(voice => {
-        const card = document.createElement('div');
-        card.className = 'voice-card';
-        card.dataset.voiceId = voice.id;
-        card.innerHTML = `
-          <div class="voice-name">${voice.name}${voice.isDefault ? ' <span style="font-size:0.65rem;color:#7a6e5a;font-weight:400">(default)</span>' : ''}</div>
-          <span class="voice-tag">${voice.tag}</span>
-          <div class="voice-desc">${voice.desc}</div>
-          <button class="voice-preview-btn" data-voice-id="${voice.id}" disabled>
-            <span class="play-icon">▶</span> Sample
-          </button>
-        `;
-        card.addEventListener('click', e => {
-          if (e.target.classList.contains('voice-preview-btn') || e.target.classList.contains('play-icon')) return;
-          selectVoice(voice.id);
-        });
-        const previewBtn = card.querySelector('.voice-preview-btn');
-        previewBtn.addEventListener('click', e => {
-          e.stopPropagation();
-          playPreview(voice.id, previewBtn);
-        });
-        grid.appendChild(card);
-      });
-    }
-
-    function updatePreviewButtons() {
-      document.querySelectorAll('.voice-preview-btn').forEach(btn => {
-        const id = btn.dataset.voiceId;
-        if (previewUrls[id]) btn.disabled = false;
-      });
-    }
-
-    function playPreview(voiceId, btn) {
-      const url = previewUrls[voiceId];
-      if (!url) return;
-
-      // Stop any active preview
-      if (activeAudio) {
-        activeAudio.pause();
-        activeAudio = null;
-        document.querySelectorAll('.voice-preview-btn').forEach(b => {
-          b.querySelector('.play-icon').textContent = '▶';
-        });
-        if (btn.dataset.playing === 'true') {
-          btn.dataset.playing = '';
-          return;
-        }
-      }
-
-      const audio = new Audio(url);
-      activeAudio = audio;
-      btn.querySelector('.play-icon').textContent = '■';
-      btn.dataset.playing = 'true';
-      audio.play().catch(() => {});
-      audio.addEventListener('ended', () => {
-        btn.querySelector('.play-icon').textContent = '▶';
-        btn.dataset.playing = '';
-        activeAudio = null;
-      });
-    }
-
-    function selectVoice(voiceId) {
-      selectedVoiceId = voiceId;
-      document.querySelectorAll('.voice-card').forEach(c => {
-        c.classList.toggle('selected', c.dataset.voiceId === voiceId);
-      });
-      const voice = VOICES.find(v => v.id === voiceId);
-      const btn = document.getElementById('btn-start');
-      btn.disabled = false;
-      btn.textContent = `Start with ${voice.name}`;
-    }
-
-    function launchConversation(voiceId) {
-      // Stop any active preview audio
-      if (activeAudio) { activeAudio.pause(); activeAudio = null; }
-
-      const voice = VOICES.find(v => v.id === voiceId) || VOICES[0];
-      document.getElementById('voice-badge').innerHTML =
-        `Voice: <span>${voice.name}</span>`;
+    document.getElementById('btn-start').addEventListener('click', () => {
+      document.getElementById('start-screen').style.display = 'none';
 
       const container = document.getElementById('widget-container');
-      container.innerHTML = '';
-
       const widget = document.createElement('elevenlabs-convai');
       widget.setAttribute('agent-id', AGENT_ID);
-      widget.setAttribute(
-        'conversation-config-override',
-        JSON.stringify({ tts: { voice_id: voiceId } })
-      );
       container.appendChild(widget);
 
-      document.getElementById('picker-screen').hidden = true;
-      document.getElementById('conv-screen').hidden = false;
-    }
-
-    // CTA buttons
-    document.getElementById('btn-start').addEventListener('click', () => {
-      if (selectedVoiceId) launchConversation(selectedVoiceId);
+      document.getElementById('conv-screen').style.display = 'flex';
     });
-
-    document.getElementById('btn-skip').addEventListener('click', () => {
-      const defaultVoice = VOICES.find(v => v.isDefault);
-      launchConversation(defaultVoice.id);
-    });
-
-    document.getElementById('btn-change-voice').addEventListener('click', () => {
-      // Tear down existing widget cleanly
-      document.getElementById('widget-container').innerHTML = '';
-      document.getElementById('conv-screen').hidden = true;
-      document.getElementById('picker-screen').hidden = false;
-    });
-
-    buildGrid();
   </script>
 
   <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
