@@ -119,64 +119,6 @@
     }
     .btn-end:hover { border-color: #8a7f6e; color: #c8bcaa; }
 
-    /* Settings toggle */
-    .settings-toggle {
-      background: none;
-      border: none;
-      color: #4a4035;
-      font-size: 0.82rem;
-      cursor: pointer;
-      padding: 0.3em;
-      letter-spacing: 0.02em;
-      margin-top: 0.25rem;
-    }
-    .settings-toggle:hover { color: #8a7f6e; }
-
-    .settings-panel {
-      background: #1a1714;
-      border: 1px solid #2a2520;
-      border-radius: 10px;
-      padding: 1.1rem 1.4rem;
-      width: 100%;
-      display: none;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .settings-panel.open { display: flex; }
-
-    .setting-row {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-    .setting-row label {
-      font-size: 0.78rem;
-      color: #6a5f50;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-    .setting-row select,
-    .setting-row input[type=range] {
-      width: 100%;
-    }
-    .setting-row select {
-      background: #0f0d0b;
-      color: #c8bcaa;
-      border: 1px solid #3a3228;
-      border-radius: 6px;
-      padding: 0.45em 0.7em;
-      font-size: 0.9rem;
-    }
-    .setting-row input[type=range] {
-      accent-color: #c4a35a;
-    }
-    .setting-note {
-      font-size: 0.72rem;
-      color: #3a3228;
-      text-align: center;
-      font-style: italic;
-    }
-
     /* Error state */
     .error-msg {
       color: #c06060;
@@ -212,20 +154,6 @@
   <div id="start-state" class="panel visible">
     <button class="btn-start" id="btn-start">Talk to Bill</button>
     <p class="hint">Microphone access required.</p>
-
-    <button class="settings-toggle" id="settings-toggle-start">&#9881; Settings</button>
-    <div class="settings-panel" id="settings-panel-start">
-      <div class="setting-row">
-        <label>Voice</label>
-        <select id="voice-select">
-          <option value="nPczCjzI2devNBz1zQrb" selected>Brian — Deep &amp; Comforting (default)</option>
-          <option value="cjVigY5qzO86Huf0OWal">Eric — Smooth &amp; Trustworthy</option>
-          <option value="iP95p4xoKVk53GoZ742B">Chris — Charming, Down-to-Earth</option>
-          <option value="pqHfZKP75CvOlQylNhV4">Bill — Wise &amp; Mature (original)</option>
-        </select>
-      </div>
-      <p class="setting-note">Voice takes effect when you start a new conversation.</p>
-    </div>
   </div>
 
   <!-- Connecting state -->
@@ -265,14 +193,10 @@
 
     async function startConversation() {
       show('connecting-state');
-      const voiceId = document.getElementById('voice-select').value;
 
       try {
         conversation = await Conversation.startSession({
           agentId: AGENT_ID,
-          overrides: {
-            tts: { voice_id: voiceId }
-          },
           onConnect: () => show('active-state'),
           onDisconnect: () => { conversation = null; show('start-state'); },
           onError: (err) => {
@@ -306,9 +230,6 @@
     document.getElementById('btn-end').addEventListener('click', endConversation);
     document.getElementById('btn-retry').addEventListener('click', startConversation);
 
-    document.getElementById('settings-toggle-start').addEventListener('click', () => {
-      document.getElementById('settings-panel-start').classList.toggle('open');
-    });
   </script>
 </body>
 </html>
