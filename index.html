@@ -93,9 +93,17 @@
     .orb.listening {
       box-shadow: 0 0 0 8px rgba(196,163,90,0.15);
     }
+    .orb.thinking {
+      animation: think 2s ease-in-out infinite;
+      opacity: 0.7;
+    }
     @keyframes pulse {
       0%, 100% { box-shadow: 0 0 0 0 rgba(196,163,90,0.5); }
       50% { box-shadow: 0 0 0 20px rgba(196,163,90,0); }
+    }
+    @keyframes think {
+      0%, 100% { opacity: 0.55; transform: scale(0.96); }
+      50% { opacity: 0.85; transform: scale(1.03); }
     }
 
     .mode-label {
@@ -207,8 +215,16 @@
           onModeChange: ({ mode }) => {
             const orb = document.getElementById('orb');
             const label = document.getElementById('mode-label');
-            orb.className = 'orb ' + (mode === 'speaking' ? 'speaking' : 'listening');
-            label.textContent = mode === 'speaking' ? 'Bill is speaking' : 'Listening';
+            if (mode === 'speaking') {
+              orb.className = 'orb speaking';
+              label.textContent = 'Bill is speaking';
+            } else if (mode === 'thinking' || mode === 'processing') {
+              orb.className = 'orb thinking';
+              label.textContent = 'Thinking…';
+            } else {
+              orb.className = 'orb listening';
+              label.textContent = 'Listening';
+            }
           },
         });
       } catch (err) {
